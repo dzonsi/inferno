@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inferno</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.animations.css">
+</head>
+<body>
+
+  <navigation-bar></navigation-bar>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="view-container">
+    <div ng-view class="view"></div>
+  </div>
+
+  <!-- footer strat -->
+  <footer-bar></footer-bar>
+  <!-- footer end-->
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+  <!-- library -->
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>
+  <!-- app -->
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="core/core.module.js"></script>
+  <script src="core/drinks/drinks.module.js"></script>
+  <script src="core/drinks/drinks.service.js"></script>
+  <script src="core/tables/tables.module.js"></script>
+  <script src="core/tables/tables.service.js"></script>
+  <script src="core/filters/filters.module.js"></script>
+  <script src="core/filters/show-table.filter.js"></script>
+  <script src="core/filters/capitalize.filter.js"></script>
+  <script src="navbar/navbar.component.js"></script>
+  <script src="footer/footer.component.js"></script>
+  <script src="tables-list/tables-list.module.js"></script>
+  <script src="tables-list/tables-list.controller.js"></script>
+  <script src="tables-list/tables-list.component.js"></script>
+  <script src="table-detail/table-detail.module.js"></script>
+  <script src="table-detail/table-detail.controller.js"></script>
+  <script src="table-detail/table-detail.component.js"></script>
+  <script src="table-detail/table-free/table-free.controller.js"></script>
+  <script src="table-detail/table-free/table-free.component.js"></script>
+  <script src="table-detail/table-occupied/table-occupied.controller.js"></script>
+  <script src="table-detail/table-occupied/table-occupied.component.js"></script>
+  <script src="table-detail/table-no-orders/table-no-orders.controller.js"></script>
+  <script src="table-detail/table-no-orders/table-no-orders.component.js"></script>
+  <script src="table-detail/table-have-orders/table-have-orders.controller.js"></script>
+  <script src="table-detail/table-have-orders/table-have-orders.component.js"></script>
+  <script src="table-detail/table-choose/table-choose.controller.js"></script>
+  <script src="table-detail/table-choose/table-choose.component.js"></script>
+  <script src="tables-edit/tables-edit.module.js"></script>
+  <script src="tables-edit/tables-edit.controller.js"></script>
+  <script src="tables-edit/tables-edit.component.js"></script>
+  <script src="drinks-edit/drinks-edit.module.js"></script>
+  <script src="drinks-edit/drinks-edit.controller.js"></script>
+  <script src="drinks-edit/remove-confirm/remove-confirm.controller.js"></script>
+  <script src="drinks-edit/drinks-edit.component.js"></script>
+  <script src="app.animations.js"></script>
+</body>
+</html>

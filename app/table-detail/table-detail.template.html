@@ -1,0 +1,5 @@
+<h2 class="h1 text-center my-5">Table {{table.number}}</h2>
+<!-- table free -->
+<table-free ng-if="!table.occupied" table="table" change-status="changeTableStatus"></table-free>
+<!-- table ocupied -->
+<table-occupied ng-if="table.occupied" table="table" drinks="drinks" numbers="numbers" order-drink="orderDrink" order-number="orderNumber" change-status="changeTableStatus" add-order-drink="addOrderDrink" remove-order-drink="removeOrderDrink"></table-occupied>

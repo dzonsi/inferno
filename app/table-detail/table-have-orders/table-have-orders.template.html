@@ -1,0 +1,13 @@
+<div class="card text-white bg-secondary">
+  <div class="card-header">
+    <h3>Table amount: {{$ctrl.table.amount}}</h3>
+ 	</div>
+  <div class="card-body">
+  	<h3 class="card-title">Table orders:</h3>
+    <ol>
+			<li ng-repeat="order in $ctrl.table.orders">
+			 <h5>{{order.name}}, price: {{ order.price}}, quantity:  {{order.quantity}}</h5>
+			</li>
+		</ol>
+	</div>
+</div>

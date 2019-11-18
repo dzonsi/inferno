@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"name": "Nescafe",
+		"price": 200
+	},
+	{
+		"id": 2,
+		"name": "Mineral water",
+		"price": 120
+	},
+	{
+		"id": 3,
+		"name": "Espresso",
+		"price": 120
+	},
+	{
+		"id": 4,
+		"name": "Beer",
+		"price": 220
+	},{
+		"id": 5,
+		"name": "Ice coffee",
+		"price": 280
+	}
+]

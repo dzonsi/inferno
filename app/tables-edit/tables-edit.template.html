@@ -1,0 +1,115 @@
+<div class="container">
+	<h2 class="text-center my-4">Add & remove tables or view table details</h2>
+	<div class="row">
+		<div class="col-12 col-sm-6">
+			<div class="card mb-3">
+				<div class="card-header">
+					<h3>Add new table</h3>
+				</div>
+				<div class="card-body">
+					<p>Add new table with next number in order (<b>{{addNumber}}</b>), or enter a new table number, and then add new table.</p>
+					<div class="input-group">
+  					<input id="add-number" type="number" min="1" class="form-control" placeholder="Enter new table number" ng-change="checkNumberTrigger()" ng-model="newNumber">
+ 						<div class="input-group-append">
+    					<button class="btn btn-info" ng-click="addTable()">Add new table</button>
+  					</div>
+					</div>
+					<p id="already-exist" class="text-danger my-2 dn">Table with that number already exist!</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h3>Remove table</h3>
+				</div>
+				<!-- talbes in list, delete show -->
+				<div ng-if="tables.length" class="card-body">
+					<p>Chose table number, and click to button to remove that table.</p>
+					<div class="input-group">
+						<select class="form-control" ng-model="removeNumber.number">
+							<option ng-repeat="table in tables | orderBy: 'number'" ng-value="table.number">
+								Number {{table.number}},
+								occupied: {{table.occupied}}
+							</option>
+						</select>
+						<div class="input-group-append">
+							<button class="btn btn-danger" data-toggle="modal" data-target="#removeTableConfirm">
+  							Remove table
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- no tables in list, can't delete -->
+				<div ng-if="!tables.length" class="card-body">
+					<p>No tables in list.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-sm-6">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="h3">Click on table to view details</h4>
+				</div>
+				<div class="card-body tables-container">
+					<ul class="tables">
+						<li class="card mb-2 nm-last tables-list-item" ng-repeat="table in tables | orderBy: 'number'">
+    					<div class="card-header" ng-attr-id="{{'table' + table.number}}">
+    				  	<h5 class="h4 mb-0">
+    			    		<span class="cp text-info" role="button" data-toggle="collapse" ng-attr-data-target="{{'#collapsetable' + table.number}}" aria-expanded="true" aria-pressed="false" ng-attr-aria-controls="{{'collapsetable' + table.number}}">
+          				Table {{ table.number }}
+        					</span>
+        					<span class="float-right d-flex justify-content-center align-items-center square">
+        					<i class="square-inner rounded-circle" ng-class="table.occupied ? 'bg-danger' : 'bg-success'"></i>
+        					</span>
+    		  			</h5>
+    					</div>
+    					<div ng-attr-id="{{'collapsetable' + table.number}}" class="collapse" ng-attr-aria-labelledby="{{'collapsetable' + table.number}}">
+      					<div class="card-body">
+        					<p>Number: {{table.number}}</p>
+        					<p>Occupied: {{table.occupied ? true : false}}</p>
+        					<p>Amount: {{table.amount}}</p>
+        					<p ng-if="table.orders.length == 0">Orders: No orders</p>
+        					<div ng-if="table.orders.length != 0">
+        						<p>Orders:</p>
+        						<ol>
+        							<li ng-repeat="order in table.orders">
+        							{{order.name}}, price: {{order.price}}, quantity: {{order.quantity}}
+        							</li>
+        						</ol>
+        					</div>
+      					</div>
+    					</div>
+    				</li>
+					</ul>
+  			</div>
+  		</div>
+		</div>
+	</div>
+</div>
+<!-- remove table confirm -->
+<div class="modal fade" id="removeTableConfirm" tabindex="-1" role="dialog" aria-labelledby="removeTableConfirm" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4 text-center">Remove table {{ removeNumber.number }}?</h5>
+      </div>
+      <div class="modal-body">
+        <p>If you want to remove table click to ok, otherwise click to cancel.</p>
+        <div class="text-center">
+        	<button class="btn btn-success" ng-click="removeTable()" data-dismiss="modal" aria-label="Close">Ok</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- can't remove table with orders info -->
+<div id="have-orders-info" class="have-orders-info w-25 shadow dn">
+	<div class="card bn">
+		<div class="card-header text-center text-white bg-secondary">
+			<h3>Can't remove table with order(s).</h3>
+		</div>
+		<div class="card-body text-center text-dark bg">
+			<h5>Close table before remove.</h5>
+		</div>
+	</div>
+</div>

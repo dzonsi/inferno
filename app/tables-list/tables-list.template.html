@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row my-3">
+		<div class="col-8 col-sm-6 col-md-4 col-lg-3">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<label class="input-group-text">Show</label>
+				</div>
+				<select class="custom-select nbs" ng-model="filter.show">
+					<option ng-repeat="option in filter.options"
+					ng-value="option">{{option | capitalize}}</option>
+				</select>
+			</div>
+			<div>
+				<button class="btn btn-outline-secondary" ng-click="changeOrder()">Change order</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div
+			ng-repeat="table in tables | showTable : filter.show | orderBy: number"
+			class="col-12 col-sm-6 col-lg-4 mb-3 mb-md-5 d-flex flex-column justify-content-center align-items-center
+			table-list-item"
+		>
+			<div class="card bg-light mb-3 home-table overflow-hidden shadow">
+  			<div class="card-header"><h2 class="h1 text-center">{{table.number}}</h2></div>
+  			<!-- if table.occupied == true -->
+  			<div ng-if="table.occupied" class="card-body d-flex flex-column justify-content-center align-items-center">
+  				<p class="card-title h2 text-danger text-center">Occupied</p>
+    			<p class="card-text text-center h5 mb-3">
+    				<span>Table amount:</span>
+						<span class="font-weight-bold">{{table.amount}}</span>
+    			</p>
+    			<a class="card-text btn btn-danger" href="#!/tables/{{table.number}}">Show details</a>
+  			</div>
+  			<!-- if table.occupied == false -->
+  			<div ng-if="!table.occupied" class="card-body d-flex flex-column justify-content-center align-items-center">
+  				<p class="card-title h2 text-success text-center mb-4">Free</p>
+    			<a class="card-text btn btn-success" href="#!/tables/{{table.number}}">Add order</a>
+  			</div>
+			</div>
+		</div>
+	</div>
+</div>

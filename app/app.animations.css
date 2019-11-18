@@ -1,0 +1,218 @@
+/* table list item */
+.table-list-item.ng-enter,
+.table-list-item.ng-leave,
+.table-list-item.ng-move {
+  transition: .4s linear all;
+}
+
+.table-list-item.ng-enter,
+.table-list-item.ng-move {
+	transform: scale(0);
+  opacity: 0;
+}
+.table-list-item.ng-enter.ng-enter-active,
+.table-list-item.ng-move.ng-move-active {
+  transform: scale(1);
+  opacity: 1;
+}
+.table-list-item.ng-leave {
+	height: 250px;
+  opacity: 1;
+}
+.table-list-item.ng-leave.ng-leave-active {
+  height: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+/* ng-view */
+.view-container {
+	position: relative;
+  margin-bottom: 56px;
+}
+.view.ng-enter,
+.view.ng-leave {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+.view.ng-enter {
+	animation: .5s fade-in;
+}
+.view.ng-leave {
+	animation: .5s fade-out;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+/* orders in table detail */
+.orders-container {
+	position: relative;
+}
+
+.have-orders.ng-enter,
+.have-orders.ng-leave,
+.have-orders.ng-move {
+  transition: .3s linear all;
+  position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.have-orders.ng-enter,
+.have-orders.ng-move {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100px;
+}
+.have-orders.ng-enter.ng-enter-active,
+.have-orders.ng-move.ng-move-active {
+	position: absolute;
+  opacity: 1;
+  top: 0;
+}
+.have-orders.ng-leave {
+  opacity: 1;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+.have-orders.ng-leave.ng-leave-active {
+	position: absolute;
+  opacity: 0;
+  top: -100px;
+}
+
+.no-orders.ng-enter,
+.no-orders.ng-leave,
+.no-orders.ng-move {
+  transition: .3s linear all;
+  position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.no-orders.ng-enter,
+.no-orders.ng-move {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100px;
+}
+.no-orders.ng-enter.ng-enter-active,
+.no-orders.ng-move.ng-move-active {
+	position: absolute;
+  opacity: 1;
+  top: 0;
+}
+.no-orders.ng-leave {
+  opacity: 1;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+.no-orders.ng-leave.ng-leave-active {
+	position: absolute;
+  opacity: 0;
+  top: -100px;
+}
+/* tables in tables edit */
+.tables-list-item.ng-enter,
+.tables-list-item.ng-leave,
+.tables-list-item.ng-move {
+  transition: .3s linear all;
+}
+
+.tables-list-item.ng-enter,
+.tables-list-item.ng-move {
+  transform: scale(0);
+}
+
+.tables-list-item.ng-enter.ng-enter-active,
+.tables-list-item.ng-move.ng-move-active {
+  transform: scale(1);
+}
+
+.tables-list-item.ng-leave {
+  transform: scale(1);
+}
+
+.tables-list-item.ng-leave.ng-leave-active {
+  transform: scale(0);
+}
+/* drinks list item */
+.drinks-list-item.ng-enter,
+.drinks-list-item.ng-leave,
+.drinks-list-item.ng-move {
+  transition: .5s linear all;
+}
+
+.drinks-list-item.ng-enter,
+.drinks-list-item.ng-move {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.drinks-list-item.ng-enter.ng-enter-active,
+.drinks-list-item.ng-move.ng-move-active {
+  height: 55.8px;
+  opacity: 1;
+}
+
+.drinks-list-item.ng-leave {
+  height: 55.8px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.drinks-list-item.ng-leave.ng-leave-active {
+  height: 0;
+  opacity: 0;
+}
+/* delete drink */
+.delete-drink.ng-enter,
+.delete-drink.ng-leave {
+  transition: .3s linear all;
+}
+
+.delete-drink.ng-enter {
+  transform: scale(0) translate(-50%, -50%);
+  opacity: 0;
+}
+.delete-drink.ng-enter.ng-enter-active {
+  transform: scale(1) translate(-50%, -50%);
+  opacity: 1;
+}
+.delete-drink.ng-leave {
+  transform: scale(1) translate(-50%, -50%);
+  opacity: 1;
+}
+.delete-drink.ng-leave.ng-leave-active {
+  transform: scale(0) translate(-50%, -50%);
+  opacity: 0;
+}
+/* new price info */
+.new-price-info.ng-enter {
+  transition: .3s linear all;
+  opacity: 0;
+}
+.new-price-info.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.new-price-info.ng-leave {
+  transition: 1s linear all;
+  bottom: 150px;
+  opacity: 1;
+}
+.new-price-info.ng-leave.ng-leave-active {
+  bottom: 0;
+  opacity: 0;
+}
