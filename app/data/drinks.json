@@ -18,7 +18,8 @@
 		"id": 4,
 		"name": "Beer",
 		"price": 220
-	},{
+	},
+	{
 		"id": 5,
 		"name": "Ice coffee",
 		"price": 280
