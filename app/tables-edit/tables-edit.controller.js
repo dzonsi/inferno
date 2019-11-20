@@ -4,12 +4,13 @@ var TablesEditController = function($scope, orderByFilter, $timeout, $routeParam
 		if($scope.tables.length) {
 			$scope.removeNumber.number = orderByFilter($scope.tables, 'number')[0].number;
 		}
+		$scope.setAddNumber();
 	});
-	$scope.addNumber;
+	$scope.addNumber = null;
 	$scope.removeNumber = {
 		number: null
 	};
-	$scope.clear;
+	$scope.clear = null;
 	// add new table
 	$scope.addTable = () => {
 		console.log('add')
