@@ -74,7 +74,7 @@ var TablesEditController = function($scope, orderByFilter, $timeout, $routeParam
 			console.log('smallest number is', $scope.addNumber);
 		}
 	}
-	// set add number every time
+	// call set add number
 	$scope.setAddNumber();
 	// remove table
 	$scope.removeTable = function() {

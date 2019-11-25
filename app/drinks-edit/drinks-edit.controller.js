@@ -1,11 +1,6 @@
-var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParams, Tables, Drinks, editDrinks) {
+var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParams, Drinks, editDrinks) {
 	this.$onInit = function() {
 		$scope.drinks = editDrinks.getDrinks();
-		$scope.newDrink = {
-			name: null,
-			price: null
-		};
-		$scope.nextId;
 		$scope.removeDrinkId = {
 			id: 1
 		};
@@ -56,11 +51,11 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 			if(/^\d+(\.\d+)?$/.test($price.val())) {
 				// everything is ok
 				// add new drink by calling method
-				// clear inputs
-				$scope.findNextId();
+				var id = $scope.findNextId();
 				var name = $name.val().charAt(0).toUpperCase() + $name.val().substr(1);
 				var price = Math.round(parseFloat($price.val(), 10));
-				$scope.addNewDrink($scope.nextId, name, price);
+				$scope.addNewDrink(id, name, price);
+				// clear inputs
 				$name.val('');
 				$price.val('');
 			} else {
@@ -84,7 +79,7 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 	}
 	// find smallest missing id in drinks
 	$scope.findNextId = function() {
-		var drinks = orderByFilter($scope.drinks, 'number');
+		var drinks = orderByFilter($scope.drinks, 'id');
 		var noMissing = true;
 		var i, id;
 		console.log('all', drinks);
@@ -92,15 +87,14 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 			id = i + 1;
 			console.log('number is', id)
 			if(drinks[i].id != id) {
-				$scope.nextId = id;
 				noMissing = false;
 				console.log('smallest missing id is', id);
-				break;
+				return id;
 			}
 		}
 		if(noMissing) {
-			$scope.nextId = drinks.length + 1;
-			console.log('smallest number is', $scope.nextId);
+			console.log('smallest number is', drinks.length + 1);
+			return drinks.length + 1;
 		}
 	}
 	// add new drink by calling service
@@ -137,8 +131,7 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 		$(event.target).attr('readonly', false);
 		$scope.startPrice = event.target.value;
 		$(`#click-info-${id}`).hide('slow');
-		$(`#new-info-${id}`).show('slow');
-		$(`#exit-info-${id}`).show('slow');
+		$(`#new-info-${id}, #exit-info-${id}`).show('slow');
 	}
 	// call on input blur
 	$scope.editPriceConfirm = (event, id) => {
@@ -156,8 +149,7 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 			}, 3000);
 		}
 		$(`#click-info-${id}`).show('slow');
-		$(`#new-info-${id}`).hide('slow');
-		$(`#exit-info-${id}`).hide('slow');
+		$(`#new-info-${id}, #exit-info-${id}`).hide('slow');
 	}
 }
-DrinksEditController.$inject = ['$scope', 'orderByFilter', '$timeout', '$routeParams', 'Tables', 'Drinks', 'editDrinks'];
+DrinksEditController.$inject = ['$scope', 'orderByFilter', '$timeout', '$routeParams', 'Drinks', 'editDrinks'];
