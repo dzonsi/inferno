@@ -1,10 +1,6 @@
 describe('drinksEdit', function() {
-  // not passing all the time
-  // karma config files order ???
 
   beforeEach(module('drinksEdit'));
-  // why do i need tablesList module ???
-  beforeEach(module('tablesList'));
 
   var $httpBackend, $componentController;
   var $rootScope = {};
@@ -37,7 +33,7 @@ describe('drinksEdit', function() {
 
     it('should create scope removeDrinkId object', function() {
       $httpBackend.expectGET('data/drinks.json');
-      var controller = $componentController('tablesList', { $scope: $rootScope});
+      var controller = $componentController('drinksEdit', { $scope: $rootScope});
       // call $onInit() to initialize data in controller
       controller.$onInit();
       $httpBackend.flush();
@@ -46,7 +42,7 @@ describe('drinksEdit', function() {
 
     it('should create various scope properties', function() {
       $httpBackend.expectGET('data/drinks.json');
-      var controller = $componentController('tablesList', { $scope: $rootScope});
+      var controller = $componentController('drinksEdit', { $scope: $rootScope});
       // call $onInit() to initialize data in controller
       controller.$onInit();
       $httpBackend.flush();
