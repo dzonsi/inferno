@@ -129,19 +129,26 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 	// call on input dbl click
 	$scope.editPrice = function(event, id) {
 		$(event.target).attr('readonly', false);
-		$scope.startPrice = event.target.value;
+		$scope.startPrice = Math.round(parseFloat(event.target.value, 10));
 		$(`#click-info-${id}`).hide('slow');
 		$(`#new-info-${id}, #exit-info-${id}`).show('slow');
 	}
 	// call on input blur
 	$scope.editPriceConfirm = (event, id) => {
 		$(event.target).attr('readonly', true);
-		var newPrice = event.target.value;
+		var newPrice = Math.round(parseFloat(event.target.value, 10));
+		// new price is ok
 		if(/^\d+(\.\d+)?$/.test(newPrice) && newPrice > 0) {
-			var price = Math.round(parseFloat(newPrice, 10));
-			$scope.newPrice(id, price);
-			$scope.newPriceInfo(id, price);
-		} else {
+			if(newPrice != $scope.startPrice) {
+				$scope.newPrice(id, newPrice);
+				$scope.newPriceInfo(id, newPrice);
+			} else {
+				event.target.value = $scope.startPrice;
+			}
+		}
+		// new price is not a number
+		// or smaller than zero
+		else {
 			event.target.value = $scope.startPrice;
 			$('#new-price-invalid').show('slow');
 			$timeout(() => {
