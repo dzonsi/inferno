@@ -10,6 +10,10 @@
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+/* remove navbar toggler outline */
+.navbar-toggler:focus, .navbar-toggler:active {
+  outline: none;
+}
 .home-table {
 	width: 250px;
 	height: 250px;
