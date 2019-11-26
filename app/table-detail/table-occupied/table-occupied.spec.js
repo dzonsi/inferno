@@ -1,4 +1,4 @@
-describe('tableChoose', function() {
+describe('tableOccupied', function() {
 
 	beforeEach(module('tableDetail'));
 
@@ -9,11 +9,11 @@ describe('tableChoose', function() {
     $rootScope = $injector.get('$rootScope');
   }));
 
-  describe('TableChooseController', function() {
+  describe('TableOccupiedController', function() {
 
   	it('should be defined', function() {
   		var $scope = $rootScope.$new();
-  		var controller = $componentController('tableChoose', { $scope: $scope});
+  		var controller = $componentController('tableOccupied', { $scope: $scope});
   		expect(controller).toBeDefined();
   	});
 

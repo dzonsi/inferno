@@ -1,6 +1,6 @@
-describe('tableChoose', function() {
+describe('removeConfirm', function() {
 
-	beforeEach(module('tableDetail'));
+	beforeEach(module('drinksEdit'));
 
 	var $componentController, $rootScope;
 
@@ -9,11 +9,11 @@ describe('tableChoose', function() {
     $rootScope = $injector.get('$rootScope');
   }));
 
-  describe('TableChooseController', function() {
+  describe('RemoveConfirmController', function() {
 
   	it('should be defined', function() {
   		var $scope = $rootScope.$new();
-  		var controller = $componentController('tableChoose', { $scope: $scope});
+  		var controller = $componentController('removeConfirm', { $scope: $scope});
   		expect(controller).toBeDefined();
   	});
 

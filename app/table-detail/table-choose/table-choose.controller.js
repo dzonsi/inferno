@@ -1,4 +1,4 @@
-var TableChooseController = function($scope, $animate, $element) {
+var TableChooseController = function($scope) {
 
 }
-TableChooseController.$inject = ['$scope', '$animate', '$element'];
+TableChooseController.$inject = ['$scope'];
