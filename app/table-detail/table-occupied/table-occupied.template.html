@@ -1,16 +1,16 @@
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-md-6">
+		<div class="col-12 col-md-6 mb-3">
 		<!-- table choose -->
 			<table-choose table="$ctrl.table" drinks="$ctrl.drinks" numbers="$ctrl.numbers" order-drink="$ctrl.orderDrink" order-number="$ctrl.orderNumber" change-status="$ctrl.changeStatus" add-order-drink="$ctrl.addOrderDrink" remove-order-drink="$ctrl.removeOrderDrink"></table-choose>
 		</div>
-		<div class="col-12 col-md-6">
-		<div class="orders-container">
+		<div class="col-12 col-md-6 mb-3">
+			<div class="orders-container">
 			<!-- if table.amount != 0 display amount and orders -->
-			<table-have-orders ng-if="$ctrl.table.amount != 0" class="have-orders" table="$ctrl.table"></table-have-orders>
-		<!-- if table.amount == 0 display info message -->
-			<table-no-orders ng-if="$ctrl.table.amount == 0" class="no-orders"></table-no-orders>
-		</div>
+				<table-have-orders ng-if="$ctrl.table.amount != 0" class="have-orders" table="$ctrl.table"></table-have-orders>
+			<!-- if table.amount == 0 display info message -->
+				<table-no-orders ng-if="$ctrl.table.amount == 0" class="no-orders"></table-no-orders>
+			</div>
 		</div>
 	</div>
 </div>
