@@ -1,40 +1,57 @@
 <div class="container">
 	<h2 class="text-center my-4">Add & remove tables or view table details</h2>
 	<div class="row">
-		<div class="col-12 col-sm-6">
-			<div class="card mb-3">
+		<div class="col-12 col-md-6 order-2 order-md-1">
+			<div class="card mb-3 shadow">
 				<div class="card-header">
 					<h3>Add new table</h3>
 				</div>
 				<div class="card-body">
 					<p>Add new table with next number in order (<b>{{addNumber}}</b>), or enter a new table number, and then add new table.</p>
+					<label for="add-number" class="sr-only">New table number</label>
 					<div class="input-group">
-  					<input id="add-number" type="number" min="1" class="form-control" placeholder="Enter new table number" ng-change="checkNumberTrigger()" ng-model="newNumber">
- 						<div class="input-group-append">
-    					<button class="btn btn-info" ng-click="addTable()">Add new table</button>
-  					</div>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-lg-8 px-0">
+									<input id="add-number" type="number" min="1" class="form-control mb-2 mb-lg-0" placeholder="Enter new table number" ng-change="checkNumberTrigger()" ng-model="newNumber">
+								</div>
+								<div class="col-12 col-lg-4 px-0">
+									<div class="input-group-append">
+										<button class="btn btn-info btn-block" ng-click="addTable()">Add new table</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<p id="already-exist" class="text-danger my-2 dn">Table with that number already exist!</p>
 				</div>
 			</div>
-			<div class="card">
+			<div class="card mb-3 shadow">
 				<div class="card-header">
 					<h3>Remove table</h3>
 				</div>
 				<!-- talbes in list, delete show -->
 				<div ng-if="tables.length" class="card-body">
 					<p>Chose table number, and click to button to remove that table.</p>
+					<label for="remove-table" class="sr-only">Table to remove</label>
 					<div class="input-group">
-						<select class="form-control" ng-model="removeNumber.number">
-							<option ng-repeat="table in tables | orderBy: 'number'" ng-value="table.number">
-								Number {{table.number}},
-								occupied: {{table.occupied}}
-							</option>
-						</select>
-						<div class="input-group-append">
-							<button class="btn btn-danger" data-toggle="modal" data-target="#removeTableConfirm">
-  							Remove table
-							</button>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-lg-8 px-0">
+									<select id="remove-table" class="form-control mb-2 mb-lg-0" ng-model="removeNumber.number">
+										<option ng-repeat="table in tables | orderBy: 'number'" ng-value="table.number">
+											Number {{table.number}}, occupied: {{table.occupied}}
+										</option>
+									</select>
+								</div>
+								<div class="col-12 col-lg-4 px-0">
+									<div class="input-group-append">
+										<button class="btn btn-danger btn-block" data-toggle="modal" data-target="#removeTableConfirm">
+											Remove table
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -44,8 +61,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-sm-6">
-			<div class="card">
+		<div class="col-12 col-md-6 order-1 order-md-2">
+			<div class="card mb-3 shadow">
 				<div class="card-header">
 					<h4 class="h3">Click on table to view details</h4>
 				</div>
