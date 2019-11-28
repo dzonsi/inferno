@@ -21,7 +21,9 @@
 				</div>
 				<div class="card-body">
 					<p>Enter new drink name and price, and click to add button.</p>
+					<label for="drink-name" class="sr-only">New drink name</label>
   				<input id="drink-name" type="text" class="form-control mb-2" placeholder="Enter new drink name" ng-change="checkNumberTrigger()" ng-model="newDrink.name" add-on-enter>
+  				<label for="drink-price" class="sr-only">New drink price</label>
   				<input id="drink-price" type="text" class="form-control mb-2" placeholder="Enter new drink price" ng-change="checkNumberTrigger()" ng-model="newDrink.price" add-on-enter>
     			<button id="add-new-drink" class="btn btn-info btn-block" ng-click="addNewDrinkValidate()">Add new drink</button>
 					<p id="already-exist" class="text-danger my-2 dn">Drink with that name already exist!</p>
@@ -29,24 +31,32 @@
 					<p id="all-fields" class="text-danger my-2 dn">You must fill all fields!</p>
 				</div>
 			</div>
-			<div class="card">
+			<div class="card mb-3">
 				<div class="card-header bg-secondary">
 					<h3 class="text-white mb-0">Remove drink</h3>
 				</div>
 				<!-- talbes in list, delete show -->
 				<div ng-if="drinks.length" class="card-body">
 					<p>Chose drink, and click on button to remove.</p>
+					<label for="remove-drink" class="sr-only">Select drink to remove</label>
 					<div class="input-group">
-						<select class="form-control" ng-model="removeDrinkId.id">
-							<option ng-repeat="drink in drinks | orderBy: 'number'" ng-value="drink.id">
-								{{drink.name}},
-								price: {{drink.price}}
-							</option>
-						</select>
-						<div class="input-group-append">
-							<button class="btn btn-danger" ng-click="changeModal()">
-  							Remove drink
-							</button>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-lg-8 px-0">
+									<select id="remove-drink" class="form-control mb-2 mb-lg-0" ng-model="removeDrinkId.id">
+										<option ng-repeat="drink in drinks | orderBy: 'number'" ng-value="drink.id">
+											{{drink.name}}, price: {{drink.price}}
+										</option>
+									</select>
+								</div>
+								<div class="col-12 col-lg-4 px-0">
+									<div class="input-group-append">
+										<button class="btn btn-danger btn-block" ng-click="changeModal()">
+											Remove drink
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -61,7 +71,8 @@
 				<div class="card-header bg-secondary">
 					<h4 class="h3 text-white">Click on drink to view details</h4>
 					<div>
-						<input class="form-control nbs" type="text" placeholder="Find drink by name" ng-model="searchName">
+						<label for="find-drink" class="sr-only">Filter drink by name</label>
+						<input id="find-drink" class="form-control nbs" type="text" placeholder="Find drink by name" ng-model="searchName">
 					</div>
 				</div>
 				<div class="card-body drinks-container">
