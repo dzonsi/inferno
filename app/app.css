@@ -65,6 +65,7 @@
 .drinks {
 	padding-left: 0;
 	margin-bottom: 0;
+	list-style-type: none;
 }
 .delete-container {
 	position: fixed;
@@ -84,7 +85,7 @@
 }
 .bg-gradient {
 	background-color: #6c757d;
-	background-image: linear-gradient(to bottom right, #6c757d 40%, #17a2b8);
+	background-image: linear-gradient(to bottom right, #6c757d 40%, #555);
 }
 /* loading spinner */
 .loading {

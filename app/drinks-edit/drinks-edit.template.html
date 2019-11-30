@@ -25,7 +25,7 @@
   				<input id="drink-name" type="text" class="form-control mb-2" placeholder="Enter new drink name" ng-change="checkNumberTrigger()" ng-model="newDrink.name" add-on-enter>
   				<label for="drink-price" class="sr-only">New drink price</label>
   				<input id="drink-price" type="text" class="form-control mb-2" placeholder="Enter new drink price" ng-change="checkNumberTrigger()" ng-model="newDrink.price" add-on-enter>
-    			<button id="add-new-drink" class="btn btn-info btn-block" ng-click="addNewDrinkValidate()">Add new drink</button>
+    			<button id="add-new-drink" class="btn btn-success btn-block" ng-click="addNewDrinkValidate()">Add new drink</button>
 					<p id="already-exist" class="text-danger my-2 dn">Drink with that name already exist!</p>
 					<p id="not-a-number" class="text-danger my-2 dn">You must enter a number for price!</p>
 					<p id="all-fields" class="text-danger my-2 dn">You must fill all fields!</p>
@@ -62,7 +62,7 @@
 				</div>
 				<!-- no tables in list, can't delete -->
 				<div ng-if="!drinks.length" class="card-body">
-					<p>No drink in list.</p>
+					<h4 class="text-info text-center">No drinks in list.</h4>
 				</div>
 			</div>
 		</div>
@@ -72,9 +72,10 @@
 					<h4 class="h3 text-white">Click on drink to view details</h4>
 					<div>
 						<label for="find-drink" class="sr-only">Filter drink by name</label>
-						<input id="find-drink" class="form-control nbs" type="text" placeholder="Find drink by name" ng-model="searchName">
+						<input id="find-drink" class="form-control nbs" type="text" placeholder="Find drink by name" ng-model="searchName" ng-disabled="!drinks.length">
 					</div>
 				</div>
+				<!-- drinks in list, show them -->
 				<div class="card-body drinks-container">
 					<ul class="drinks">
 						<li class="card mb-2 nm-last drinks-list-item" ng-repeat="drink in drinks | filter: searchName">
@@ -95,8 +96,25 @@
       					</div>
     					</div>
     				</li>
+    				<!-- filter search have no match, show info message -->
+    				<li ng-if="!(drinks | filter: searchName).length && drinks.length" class="drinks-list-item">
+    					<h4 class="text-info text-center">No drinks with that name.</h4>
+    				</li>
+    				<!-- no drinks in list, show info message -->
+    				<li ng-if="!drinks.length" class="drinks-list-item">
+    					<h4 class="text-info text-center">No drinks in list.</h4>
+    				</li>
 					</ul>
-  			</div>
+					<!-- filter search have no match, show info message -->
+		<!--	<div ng-if="!(drinks | filter: searchName).length && drinks.length">
+						<h4 class="text-info text-center">No drinks with that name.</h4>
+					</div>
+					<h4 ng-if="!drinks.length" class="text-info text-center">No drinks in list.</h4>
+  			</div> -->
+  			<!-- no drinks in list, show info message -->
+  			<!-- only list info ??? --->
+  			<!-- list info sr-only and divs for user info ??? -->
+  			<!-- only divs and leave ul empty ??? -->
   		</div>
 		</div>
 	</div>

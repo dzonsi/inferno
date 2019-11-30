@@ -104,7 +104,12 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 	// remove drink
 	$scope.removeDrink = function() {
 		editDrinks.removeDrink($scope.removeDrinkId.id);
-		$scope.removeDrinkId.id = $scope.drinks[0].id;
+		$scope.searchName = '';
+		if(!$scope.drinks.length) {
+			$scope.removeDrinkId.id = 1;
+		} else {
+			$scope.removeDrinkId.id = $scope.drinks[0].id;
+		}
 	}
 	// call editDrinks update price
 	$scope.newPrice = function(id, newPrice) {
