@@ -2,6 +2,7 @@
 	<h2 class="text-center my-4">Add & remove tables or view table details</h2>
 	<div class="row">
 		<div class="col-12 col-md-6 order-2 order-md-1">
+			<!-- add new table start -->
 			<div class="card mb-3 shadow">
 				<div class="card-header">
 					<h3>Add new table</h3>
@@ -17,7 +18,7 @@
 								</div>
 								<div class="col-12 col-lg-4 px-0">
 									<div class="input-group-append">
-										<button class="btn btn-info btn-block" ng-click="addTable()">Add new table</button>
+										<button class="btn btn-success btn-block" ng-click="addTable()">Add new table</button>
 									</div>
 								</div>
 							</div>
@@ -26,6 +27,8 @@
 					<p id="already-exist" class="text-danger my-2 dn">Table with that number already exist!</p>
 				</div>
 			</div>
+			<!-- add new table end -->
+			<!-- remove table start -->
 			<div class="card mb-3 shadow">
 				<div class="card-header">
 					<h3>Remove table</h3>
@@ -57,16 +60,19 @@
 				</div>
 				<!-- no tables in list, can't delete -->
 				<div ng-if="!tables.length" class="card-body">
-					<p>No tables in list.</p>
+					<h4 class="text-center text-info">No tables in list.</h4>
 				</div>
 			</div>
+			<!-- remove table end -->
 		</div>
 		<div class="col-12 col-md-6 order-1 order-md-2">
+			<!-- tables list start -->
 			<div class="card mb-3 shadow">
 				<div class="card-header">
-					<h4 class="h3">Click on table to view details</h4>
+					<h3 class="h3">Click on table to view details</h3>
 				</div>
-				<div class="card-body tables-container">
+				<!-- tables in list, show them -->
+				<div ng-if="tables.length" class="card-body tables-container">
 					<ul class="tables">
 						<li class="card mb-2 nm-last tables-list-item" ng-repeat="table in tables | orderBy: 'number'">
     					<div class="card-header" ng-attr-id="{{'table' + table.number}}">
@@ -98,7 +104,14 @@
     				</li>
 					</ul>
   			</div>
+  			<div>
+  			<!-- no tables in list, show info message -->
+  			<div ng-if="!tables.length" class="card-body">
+					<h4 class="text-center text-info">No tables in list.</h4>
+				</div>
+  			</div>
   		</div>
+  		<!-- talbes list end -->
 		</div>
 	</div>
 </div>
