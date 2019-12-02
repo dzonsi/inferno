@@ -14,6 +14,11 @@
 .navbar-toggler:focus, .navbar-toggler:active {
   outline: none;
 }
+.view-container {
+	position: relative;
+  margin-bottom: 56px;
+  margin-top: 64px;
+}
 .home-table {
 	width: 250px;
 	height: 250px;

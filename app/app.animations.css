@@ -26,10 +26,6 @@
   padding-top: 0;
 }
 /* ng-view */
-.view-container {
-	position: relative;
-  margin-bottom: 56px;
-}
 .view.ng-enter,
 .view.ng-leave {
 	position: absolute;
