@@ -24,9 +24,9 @@ angular.
 					},
 					addDrink(id, name, price) {
 						var newDrink = {
-							id: id,
-							name: name,
-							price: price
+							id,
+							name,
+							price
 						}
 						drinks.push(newDrink);
 					},
