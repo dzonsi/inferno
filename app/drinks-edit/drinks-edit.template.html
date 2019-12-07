@@ -139,13 +139,12 @@
 </div>
 
 <!-- new price info -->
-<div ng-if="newPriceInfoShow" class="new-price-info shadow">
+<div ng-if="newPriceInfoShow" class="new-price-info shadow-lg">
 	<div class="card bn">
-		<div class="card-header text-center text-white bg-success">
-			<h3>{{newPriceName}}</h3>
-		</div>
-		<div class="card-body text-success bg">
-			<h5>New price is set to {{newPriceValue}}</h5>
+		<div class="card-body text-center">
+			<i class="fa fa-info-circle error-info text-info mb-4"></i>
+			<h3 class="text-info">{{newPriceName}}</h3>
+			<h5>New price is set to {{newPriceValue}}.</h5>
 		</div>
 	</div>
 </div>
@@ -153,7 +152,7 @@
 <!-- new price invalid -->
 <div id="new-price-invalid" class="new-price-invalid shadow-lg dn">
 		<div class="card bn">
-			<div class="card-body text-center text-dark bg">
+			<div class="card-body text-center">
 				<i class="fa fa-info-circle error-info text-info mb-4"></i>
 				<h3 class="text-info mb-3">Invalid input</h3>
 				<h5 class="mb-0">New price must be a number!</h5>
