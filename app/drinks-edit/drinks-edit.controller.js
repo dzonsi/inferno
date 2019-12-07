@@ -1,23 +1,29 @@
-var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParams, Drinks, editDrinks) {
+var DrinksEditController = function($scope, $http, $window, orderByFilter, $timeout, $routeParams, Drinks, editDrinks) {
 	this.$onInit = function() {
 		$scope.drinks = editDrinks.getDrinks();
+		$http.get('data/drinks.json')
+			.then(response => console.log(response.data))
+			.catch(error => $scope.status.error = true)
+			.finally(() => $scope.status.loading = false);
+		$scope.status = {
+			loading: true,
+			error: false
+		}
 		$scope.removeDrinkId = {
 			id: 1
 		};
 		$scope.showModal = false;
-		editDrinks.getPromise().then(function(response) {
-			console.log(response);
-			$('#loading').addClass('dn-i');
-			$('#content').show();
-		}, function(reject) {
-			console.log(reject);
-		});
 		$scope.startPrice = null;
 		$scope.newPriceInfoShow = false;
 		$scope.newPriceName = null;
 		$scope.newPriceValue = null;
 		$scope.newPriceTimeout = null;
 	}
+	// reload page in error section
+	$scope.reloadPage = function() {
+		$window.location.reload(true)
+	}
+	// remove drink confirm method
 	$scope.changeModal = function() {
 		$scope.showModal = !$scope.showModal;
 	}
@@ -164,4 +170,4 @@ var DrinksEditController = function($scope, orderByFilter, $timeout, $routeParam
 		$(`#new-info-${id}, #exit-info-${id}`).hide('slow');
 	}
 }
-DrinksEditController.$inject = ['$scope', 'orderByFilter', '$timeout', '$routeParams', 'Drinks', 'editDrinks'];
+DrinksEditController.$inject = ['$scope', '$http', '$window', 'orderByFilter', '$timeout', '$routeParams', 'Drinks', 'editDrinks'];

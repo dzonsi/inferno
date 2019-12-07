@@ -1,4 +1,5 @@
-<div id="loading" class="loading container d-flex justify-content-center align-items-center">
+<!-- loading spinner -->
+<div ng-if="status.loading" class="loading container d-flex justify-content-center align-items-center">
 	<div class="lds-ellipsis">
 		<div></div>
 		<div></div>
@@ -6,13 +7,28 @@
 		<div></div>
 	</div>
 </div>
-<div id="content" class="container pt-5 dn">
-	<div class="delete-container" ng-if="showModal">
-	</div>
-	<!-- remove drink confirm -->
-	<!-- how to animate div inside ng-if ??? -->
-	<remove-confirm ng-if="showModal" change-modal="changeModal" remove-drink="removeDrink"></remove-confirm>
 
+<!-- error message -->
+<div ng-if="status.error" class="error-container">
+	<div class="error">
+		<div class="card shadow-lg text-center">
+			<div class="card-body p-5">
+				<i class="fa fa-info-circle error-info text-info mb-4"></i>
+				<h5 class="">Something went wrong!</h5>
+				<h5 class="mb-5">Please reload the page!</h5>
+				<button class="btn btn-block btn-info" ng-click="reloadPage()">Reload</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- delete container -->
+	<div class="delete-container" ng-if="showModal">
+		<remove-confirm change-modal="changeModal" remove-drink="removeDrink"></remove-confirm>
+	</div>
+
+<!-- content of page -->
+<div ng-if="!status.loading && !status.error" class="container pt-5" >
 	<h2 class="text-center mb-5">Add & remove drinks</h2>
 	<div class="row">
 		<div class="col-12 col-md-6 order-2 order-md-1">
@@ -133,6 +149,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- new price invalid -->
 <div id="new-price-invalid" class="new-price-invalid w-25 shadow dn">
 	<div class="card bn">

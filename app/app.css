@@ -76,17 +76,21 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.3);
-	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 1050;
+	transition: opacity .15s linear;
 }
 .delete-drink {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 99;
+	min-height: calc(100vh - 3.5rem);
+	max-width: 500px;
+	margin: 1.75rem auto;
+}
+@media screen and (max-width: 576px) {
+	.delete-drink {
+		margin: .5rem;
+	}
 }
 .bg-gradient {
 	background-color: #6c757d;
@@ -112,7 +116,7 @@
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: dodgerblue;
+  background: #17a2b8;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
@@ -154,6 +158,29 @@
   100% {
     transform: translate(19px, 0);
   }
+}
+/* error */
+.error-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1030;
+}
+.error {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 576px) {
+	.error {
+		width: 80%;
+	}
+}
+.error-info {
+	font-size: 60px;
 }
 /* edit price input */
 .edit-price {
